@@ -1,8 +1,8 @@
-import styled from 'styled-components/native';
-import { FlatList } from 'react-native'
 import { Feather } from '@expo/vector-icons';
-import { RFPercentage, RFValue } from 'react-native-responsive-fontsize';
+import { FlatList } from 'react-native';
 import { getBottomSpace, getStatusBarHeight } from 'react-native-iphone-x-helper';
+import { RFPercentage, RFValue } from 'react-native-responsive-fontsize';
+import styled from 'styled-components/native';
 import { DataListProps } from '.';
 
 export const Container = styled.View`

@@ -1,14 +1,13 @@
 import React from 'react';
 import {
+  Amount,
   Container,
+  Footer,
   Header,
   Icon,
-  Title,
-  Footer,
-  Amount,
-  LastTransaction
+  LastTransaction,
+  Title
 } from './styles';
-
 interface Props {
   title: string;
   amount: string;
@@ -16,7 +15,7 @@ interface Props {
   type: 'up' | 'down' | 'total'
 }
 
-export function HightlightCard({title, amount, lastTransaction, type}: Props) {
+export function HightlightCard({ title, amount, lastTransaction, type }: Props) {
   const icon = {
     up: 'arrow-up-circle',
     down: 'arrow-down-circle',
@@ -26,7 +25,7 @@ export function HightlightCard({title, amount, lastTransaction, type}: Props) {
     <Container type={type}>
       <Header>
         <Title type={type}>{title}</Title>
-        <Icon name={icon[type]} type={type}/>
+        <Icon name={icon[type]} type={type} />
       </Header>
       <Footer>
         <Amount type={type}>{amount}</Amount>

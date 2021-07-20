@@ -3,18 +3,18 @@ import { HightlightCard } from '../../components/HighLightCard';
 import { TransactionCard, TransactionCardProps } from '../../components/TransactionCard';
 import {
   Container,
-  Header, Photo,
+  Header,
+  HightlightCards,
+  Icon,
+  Photo,
+  Title,
+  TransactionList,
+  Transactions,
   User,
   UserGreeting,
   UserInfo,
   UserName,
-  UserWrapper,
-  Icon,
-  HightlightCards,
-  Transactions,
-  Title,
-  TransactionList
-
+  UserWrapper
 } from './styles';
 
 export interface DataListProps extends TransactionCardProps {

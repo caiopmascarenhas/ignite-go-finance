@@ -1,20 +1,18 @@
 import React from 'react';
 import {
-  Container,
-  Title,
   Amount,
-  Footer,
-  Cateogry,
-  Icon,
   CartegoryName,
-  Date
+  Cateogry,
+  Container,
+  Date,
+  Footer,
+  Icon,
+  Title
 } from './styles';
-
 interface Category {
   name: string;
   icon: string;
 }
-
 export interface TransactionCardProps {
   type: 'positive' | 'negative';
   title: string;
@@ -22,7 +20,6 @@ export interface TransactionCardProps {
   category: Category
   date: string;
 }
-
 interface Props {
   data: TransactionCardProps
 }
