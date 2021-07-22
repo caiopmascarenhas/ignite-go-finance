@@ -60,7 +60,6 @@ export function Register() {
   };
 
   async function handleRegister(form: FormData) {
-    const dataKey = '@gofinance:transactions';
     if (!transactionType) {
       return Alert.alert('Selecione o tipo da transação')
     } else if (category.key === 'category') {
@@ -75,6 +74,7 @@ export function Register() {
       date: new Date()
     };
     try {
+      const dataKey = '@gofinance:transactions';
       const data = await AsyncStorage.getItem(dataKey);
       const currentData = data ? JSON.parse(data) : [];
       const dataFormatted = [
