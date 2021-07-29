@@ -13,7 +13,8 @@ import { StatusBar } from 'react-native';
 import 'react-native-gesture-handler';
 import { ThemeProvider } from 'styled-components';
 import theme from './src/global/styles/theme';
-import { AppRoutes } from './src/routes/app.routes';
+import { AuthProvider } from './src/hooks/auth';
+import { SignIn } from './src/screens/SignIn';
 
 export default function App() {
 
@@ -31,7 +32,9 @@ export default function App() {
     <ThemeProvider theme={theme}>
       <NavigationContainer>
         <StatusBar barStyle="light-content" />
-        <AppRoutes />
+        <AuthProvider>
+          <SignIn />
+        </AuthProvider>
       </NavigationContainer>
     </ThemeProvider>
   )
