@@ -1,6 +1,8 @@
-import React from 'react';
-import { Alert } from 'react-native';
+import React, { useState } from 'react';
+import { Platform } from 'react-native';
+import { ActivityIndicator, Alert } from 'react-native';
 import { RFValue } from 'react-native-responsive-fontsize';
+import { useTheme } from 'styled-components';
 import AppleSvg from '../../assets/apple.svg';
 import GoogleSvg from '../../assets/google.svg';
 import LogoSvg from '../../assets/logo.svg';
@@ -18,16 +20,31 @@ import {
 
 export function SignIn() {
 
-  const { signInWithGoogle } = useAuth();
+  const [isLoading, setIsLoading] = useState(false);
+
+  const theme = useTheme();
+
+  const { signInWithGoogle, signInWithApple } = useAuth();
 
   async function handleSignInWithGoogle() {
     try {
-      await signInWithGoogle();
+      setIsLoading(true);
+      return await signInWithGoogle();
     } catch (error) {
-      Alert.alert('Não foi possível conectar a conta Google')
+      Alert.alert('Não foi possível conectar a conta Google');
+      setIsLoading(false);
     }
+  };
 
-  }
+  async function handleSignInWithApple() {
+    try {
+      setIsLoading(true);
+      return await signInWithApple();
+    } catch (error) {
+      Alert.alert('Não foi possível conectar a conta Apple');
+      setIsLoading(false);
+    }
+  };
 
   return (
     <Container>
@@ -54,9 +71,21 @@ export function SignIn() {
             svg={GoogleSvg}
             onPress={handleSignInWithGoogle}
           />
-          <SingInSocialButton
-            title='Entrar com Apple'
-            svg={AppleSvg} />
+          {
+            Platform.OS === 'ios'
+            && <SingInSocialButton
+              title='Entrar com Apple'
+              svg={AppleSvg}
+              onPress={handleSignInWithApple}
+            />
+          }
+          {
+            isLoading &&
+            <ActivityIndicator
+              color={theme.colors.shape}
+              style={{ marginTop: 18 }}
+            />
+          }
         </FooterWrapper>
       </Footer>
     </Container>

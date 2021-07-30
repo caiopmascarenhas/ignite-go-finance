@@ -10,6 +10,7 @@ import { Button } from '../../components/Form/Button';
 import { CategorySelectButton } from '../../components/Form/CategorySelectButton';
 import { InputForm } from '../../components/Form/InputForm';
 import { TransactionTypeButton } from '../../components/Form/TransactionTypeButton';
+import { useAuth } from '../../hooks/auth';
 import { CategorySelect } from '../CategorySelect';
 import {
   Container,
@@ -42,6 +43,7 @@ export function Register() {
     key: 'category',
     name: 'Categoria',
   });
+  const { user } = useAuth();
 
   const navigation = useNavigation()
 
@@ -74,7 +76,7 @@ export function Register() {
       date: new Date()
     };
     try {
-      const dataKey = '@gofinance:transactions';
+      const dataKey = `@gofinance:transactions_user:${user.id}`;
       const data = await AsyncStorage.getItem(dataKey);
       const currentData = data ? JSON.parse(data) : [];
       const dataFormatted = [
