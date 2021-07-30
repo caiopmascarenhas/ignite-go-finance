@@ -80,7 +80,6 @@ function AuthProvider({ children }: AuthProviderProps) {
           AppleAuthentication.AppleAuthenticationScope.EMAIL,
         ]
       });
-      console.log(credential.fullName!)
       if (credential) {
         const givenName = credential.fullName!.givenName!;
         const familyName = credential.fullName!.familyName!.split(' ')[0];
@@ -92,7 +91,6 @@ function AuthProvider({ children }: AuthProviderProps) {
           name,
           photo,
         };
-        console.log(userLogged)
         setUser(userLogged);
         await AsyncStorage.setItem(userStorageKey, JSON.stringify(userLogged));
       }
